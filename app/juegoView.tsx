@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import onCreateButton from "@/app/utils/defaultAppButton";
 import {router} from "expo-router";
 import {useGameContext} from "@/app/global/GameContext";
+import confirmarSalida from "@/app/utils/alertController";
 
 
 export default function Activity(){
@@ -31,7 +32,7 @@ export default function Activity(){
                 <Text>Hola</Text>
             </View>
             <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                {onCreateButton('Salir', 'red', 10, 5,() => router.push('/'))}
+                {onCreateButton('Rendirse', 'red', 10, 5, () => confirmarSalida('¿Estas Seguro que deseas RENDIRTE?'))}
             </View>
         </View>
     );
