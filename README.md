@@ -18,3 +18,6 @@ Una vez inciada la app , se selecciona el emualrdor :
 - a : Android
 - i : IOS
 - w : Web
+  
+### Nota:
+Expo solo ejecuta la aplicación si hay un emulador encendido anteriormente , sino este da error. Puede ser IOS o Android.
