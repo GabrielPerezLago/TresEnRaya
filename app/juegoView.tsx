@@ -1,9 +1,9 @@
 import {Text, View} from "react-native";
 import {useEffect, useState} from "react";
 import onCreateButton from "@/app/utils/defaultAppButton";
-import {router} from "expo-router";
 import {useGameContext} from "@/app/global/GameContext";
 import confirmarSalida from "@/app/utils/alertController";
+import printTablero from "@/app/juego/juego";
 
 
 export default function Activity(){
@@ -19,7 +19,7 @@ export default function Activity(){
 
 
     return(
-        <View style={{flex:1, justifyContent: 'center'}}>
+        <View style={{flex:1, justifyContent: 'center', margin: 20}}>
             <View id={`header`} style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', margin: 20}}>
                 <Text style={{color:'red', fontSize:30, fontFamily: 'Pacifico', margin: 30}}>
                     {formateTiempo(seconds)}
@@ -28,11 +28,10 @@ export default function Activity(){
                     {data?.dificultad.toUpperCase()}
                 </Text>
             </View>
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                <Text>Hola</Text>
-            </View>
-            <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-                {onCreateButton('Rendirse', 'red', 10, 5, () => confirmarSalida('¿Estas Seguro que deseas RENDIRTE?'))}
+            {printTablero()}
+            <View style={{flex:1, justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+                {onCreateButton('Pasar Turno >>', 'orange', 5, 15)}
+                {onCreateButton('Rendirse', 'red', 5, 5, () => confirmarSalida('¿Estas Seguro que deseas RENDIRTE?'))}
             </View>
         </View>
     );
