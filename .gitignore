@@ -43,3 +43,7 @@ app-example
 /android
 
 package-lock.json
+
+.vscode
+.idea
+
