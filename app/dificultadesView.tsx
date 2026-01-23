@@ -1,26 +1,28 @@
 import {Button, Pressable, Text, View} from "react-native";
 import {insertPutuacion} from "@/backend/insetPuntuacion";
-import defaultHeader from "@/app/utils/defaultHeader";
-import onCreateButton from "@/app/utils/defaultAppButton";
+import defaultHeader from "@/app/components/AppHeader";
+import onCreateButton from "@/app/components/AppButton";
 import { useGameContext } from "@/app/global/GameContext";
 import {router} from "expo-router";
+import AppHeader from "@/app/components/AppHeader";
+import AppButton from "@/app/components/AppButton";
 
 
 export default function Activity(){
     const data = useGameContext()
     return (
         <View style={{flex:1, justifyContent: 'space-evenly', margin: 10}}>
-            {defaultHeader('Dificultad', 'blue')}
+            <AppHeader tittle={'Dificultades'} color={'blue'}/>
             <View style={{flex:1, justifyContent: 'center', margin:5, alignItems: 'center'}}>
-                {onCreateButton('Facil', 'green', 10, 18, () => {
+                <AppButton text={'Facil'} color={'green'} onPress={() => {
                     data?.setDificultad('facil')
-                    router.push('/fichasView')
-                })}
-                {onCreateButton('Dificil', 'orange', 10, 18 ,  () => {
-                    data?.setDificultad('dificil')
-                    router.push('/fichasView')
-                })}
-                {onCreateButton('Salir', 'red', 10,18 ,  () => { router.push('/') })}
+                    router.push('/fichasView')}
+                }/>
+                <AppButton text={'Dificil'} color={'orange'} onPress={() => {
+                    data?.setDificultad('facil')
+                    router.push('/fichasView')}}/>
+
+                <AppButton text={'Salir'} color={'red'} onPress={() => router.push('/')}/>
             </View>
         </View>
     );

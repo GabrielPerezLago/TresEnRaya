@@ -1,4 +1,4 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import {DarkTheme, DefaultTheme, NavigationContainer, ThemeProvider} from '@react-navigation/native';
 import { GameProvider } from "@/app/global/GameContext";
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -13,7 +13,6 @@ import {initDataBase} from "@/backend/schema";
 
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
 
   useEffect(() => {
       initDataBase()
@@ -34,7 +33,7 @@ export default function RootLayout() {
 
   return (
       <GameProvider>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <ThemeProvider value={DefaultTheme}>
           <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />
               <Stack.Screen name="dificultadesView" options={{headerShown: false}} />
