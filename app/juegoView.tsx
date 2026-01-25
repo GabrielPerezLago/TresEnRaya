@@ -3,11 +3,13 @@ import {useEffect, useState} from "react";
 import onCreateButton from "@/app/components/AppButton";
 import {useGameContext} from "@/app/global/GameContext";
 import confirmarSalida from "@/app/utils/alertController";
-import printTablero from "@/app/juego/juego";
+import {Tablero as printTablero} from "@/app/components/Tablero";
 import AppButton from "@/app/components/AppButton";
+import {Tablero} from "@/app/components/Tablero";
+import {router} from "expo-router";
 
 
-export function Activity() {
+export default function Activity() {
     const [seconds, setSeconds] = useState(0);
     const data = useGameContext()
 
@@ -18,10 +20,11 @@ export function Activity() {
         return () => clearInterval(interval)
     }, []);
 
-
+    let ficha = data?.ficha
+    ficha ==  null ? ficha = "" : ficha;
 
     return (
-        <View style={{flex: 1, justifyContent: 'center', margin: 20}}>
+        <View style={{flex: 1, justifyContent: 'center', marginHorizontal: 20, marginTop: -70}}>
             <View id={`header`} style={{
                 flex: 1,
                 flexDirection: 'row',
@@ -29,17 +32,20 @@ export function Activity() {
                 alignItems: 'center',
                 margin: 20
             }}>
-                <Text style={{color: 'red', fontSize: 30, fontFamily: 'Pacifico', margin: 30}}>
+                <Text style={{color: 'red', fontSize: 30, fontFamily: 'Pacifico', margin: 0}}>
                     {formateTiempo(seconds)}
                 </Text>
-                <Text style={{color: 'blue', fontSize: 30, fontFamily: 'Pacifico', margin: 30}}>
+                <Text style={{color: 'blue', fontSize: 30, fontFamily: 'Pacifico', margin: 0}}>
                     {data?.dificultad.toUpperCase()}
                 </Text>
             </View>
-            {printTablero()}
+
+            <Tablero userFicha={ficha}/>
+
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-                <AppButton text={'Pasar Turno >>'} color={'orange'} margin={5} size={15}/>
-                <AppButton text={'Rendirse'} color={'red'} margin={5} size={5} onPress={ () => confirmarSalida('¿Estas Seguro que deseas RENDIRTE?' ) }/>
+
+                <AppButton text={'Rendirse'} color={'red'} margin={5} size={5}
+                           onPress={() => confirmarSalida('¿Estas Seguro que deseas RENDIRTE?', () => router.push('/'))}/>
             </View>
         </View>
     );

@@ -9,6 +9,8 @@ type Button = {
     size?: number,
     onPress?: () => void
 }
+
+
 export default function AppButton({ text, color, margin = 10, size = 18, onPress } : Button) {
     const importData = useGameContext()
     return <Pressable
@@ -19,12 +21,5 @@ export default function AppButton({ text, color, margin = 10, size = 18, onPress
 }
 
 
-export function celdaButton(text: string, onClick?: () => void){
-    return <Pressable onPress={ () => onClick?.()}
-            style={{backgroundColor: 'blue', width: 90, height: 90, margin: 10, borderRadius: 20}}>
-        <Text style={{color: 'white'}}>
-            {text}
-        </Text>
-    </Pressable>
-}
+
 

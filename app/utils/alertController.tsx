@@ -1,7 +1,6 @@
 import {Alert} from "react-native";
-import {router} from "expo-router";
 
-export default function  confirmarSalida(mensaje: string) {
+export default function confirmarSalida(mensaje: string, onPress?: () => void) {
     Alert.alert(
         'Salir',
         mensaje,
@@ -12,7 +11,7 @@ export default function  confirmarSalida(mensaje: string) {
             },
             {
                 text: 'Aceptar',
-                onPress: () => router.push('/'),
+                onPress: () => onPress?.(),
                 style: 'destructive'
             }
         ],
