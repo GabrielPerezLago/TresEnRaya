@@ -8,14 +8,15 @@ import { useColorScheme } from '@/hooks/use-color-scheme';
 import {useFonts} from "expo-font";
 import {ActivityIndicator, View} from "react-native";
 import {useEffect} from "react";
-import {initDataBase} from "@/backend/schema";
+import {initDb} from "@/app/utils/DB/DBController";
+
 
 
 
 export default function RootLayout() {
 
   useEffect(() => {
-      initDataBase()
+      initDb()
       console.log('Base de datos lista')
   }, []);
   const [fonts] = useFonts({
@@ -39,6 +40,8 @@ export default function RootLayout() {
               <Stack.Screen name="dificultadesView" options={{headerShown: false}} />
               <Stack.Screen name="fichasView" options={{headerShown: false}} />
               <Stack.Screen name="juegoView" options={{headerShown: false}} />
+              <Stack.Screen name="endView" options={{headerShown: false}}/>
+              <Stack.Screen name="puntuacionesView" options={{headerShown: false}}/>
           </Stack>
           <StatusBar style="auto" />
         </ThemeProvider>

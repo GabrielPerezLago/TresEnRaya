@@ -1,7 +1,4 @@
 import {Button, Pressable, Text, View} from "react-native";
-import {insertPutuacion} from "@/backend/insetPuntuacion";
-import defaultHeader from "@/app/components/AppHeader";
-import onCreateButton from "@/app/components/AppButton";
 import { useGameContext } from "@/app/global/GameContext";
 import {router} from "expo-router";
 import AppHeader from "@/app/components/AppHeader";
@@ -19,15 +16,11 @@ export default function Activity(){
                     router.push('/fichasView')}
                 }/>
                 <AppButton text={'Dificil'} color={'orange'} onPress={() => {
-                    data?.setDificultad('facil')
+                    data?.setDificultad('dificil')
                     router.push('/fichasView')}}/>
 
                 <AppButton text={'Salir'} color={'red'} onPress={() => router.push('/')}/>
             </View>
         </View>
     );
-}
-
-function guardarPuntuacion(){
-    insertPutuacion('x', 'facil', '00:90', true)
 }

@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 import onCreateButton from "@/app/components/AppButton";
 import {useGameContext} from "@/app/global/GameContext";
 import confirmarSalida from "@/app/utils/alertController";
-import {Tablero as printTablero} from "@/app/components/Tablero";
 import AppButton from "@/app/components/AppButton";
 import {Tablero} from "@/app/components/Tablero";
 import {router} from "expo-router";
@@ -20,18 +19,17 @@ export default function Activity() {
         return () => clearInterval(interval)
     }, []);
 
+    useEffect(() => {
+        const time = formateTiempo(seconds)
+        data?.setTiempo(time)
+    }, [seconds]);
+
     let ficha = data?.ficha
     ficha ==  null ? ficha = "" : ficha;
 
     return (
         <View style={{flex: 1, justifyContent: 'center', marginHorizontal: 20, marginTop: -70}}>
-            <View id={`header`} style={{
-                flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                margin: 20
-            }}>
+            <View id={`header`} style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', margin: 20}}>
                 <Text style={{color: 'red', fontSize: 30, fontFamily: 'Pacifico', margin: 0}}>
                     {formateTiempo(seconds)}
                 </Text>
@@ -58,7 +56,6 @@ export default function Activity() {
 
         const mm = minutos.toString().padStart(2, '0')
         const ss = seg.toString().padStart(2, '0')
-
         return `${mm}:${ss}`
     }
 

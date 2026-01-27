@@ -7,7 +7,7 @@ import AppHeader from "@/app/components/AppHeader";
 import AppButton from "@/app/components/AppButton";
 import FichaButton from "@/app/components/FichasButton";
 
-export default function MiComponente() {
+export default function FichasView() {
     return (
             <View style={{flex: 1, justifyContent: 'center' }}>
                 <AppHeader tittle={'Selecciona tu ficha'}/>

@@ -10,7 +10,7 @@ export default function MiComponente() {
             <AppHeader tittle={'Tres en Raya'} />
             <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
                 <AppButton text={'Iniciar'} color={'green'} margin={10} size={18} onPress={() => router.push('/dificultadesView') }/>
-                <AppButton text={'Puntuaciones'} color={'blue'} margin={10} size={18} onPress={() =>  router.push('./')}/>
+                <AppButton text={'Puntuaciones'} color={'blue'} margin={10} size={18} onPress={() =>  router.push('/puntuacionesView')}/>
                 {printExitButton()}
             </View>
         </View>
